@@ -1,0 +1,13 @@
+[
+  {
+    "role": "Intern Django",
+    "organisation": "NT-SOFT",
+    "startDate": "May, 2022",
+    "endDate": "Sept, 2022",
+    "experiences": [
+      "Understanding the Django framework",
+      "Developed a simple e-commerce website with Django"
+    ],
+    "imageSrc": "history/nhattamsoft.webp"
+  }
+]
