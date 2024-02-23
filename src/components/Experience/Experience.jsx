@@ -4,13 +4,21 @@ import styles from "./Experience.module.css";
 import skills from "../../data/skills.json";
 import history from "../../data/history.json";
 import { getImageUrl } from "../../utils";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export const Experience = () => {
+  const [ref, inView] = useInView();
   return (
-    <section className={styles.container} id="experience">
+    <section className={styles.container} id="experience" ref={ref}>
       <h2 className={styles.title}>Experience</h2>
       <div className={styles.content}>
-        <div className={styles.skills}>
+        <motion.div
+          className={styles.skills}
+          initial={{ x: "100vw" }}
+          animate={{ x: inView ? 0 : "100vw" }}
+          transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        >
           {skills.map((skill, id) => {
             return (
               <div key={id} className={styles.skill}>
@@ -21,8 +29,13 @@ export const Experience = () => {
               </div>
             );
           })}
-        </div>
-        <ul className={styles.history}>
+        </motion.div>
+        <motion.ul
+          className={styles.history}
+          initial={{ x: "-100vw" }}
+          animate={{ x: inView ? 0 : "-100vw" }}
+          transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        >
           {history.map((historyItem, id) => {
             return (
               <li key={id} className={styles.historyItem}>
@@ -42,7 +55,7 @@ export const Experience = () => {
               </li>
             );
           })}
-        </ul>
+        </motion.ul>
       </div>
     </section>
   );
